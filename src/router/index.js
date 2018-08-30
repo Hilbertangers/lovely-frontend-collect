@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import waterWave from '../views/waterWave';
 import clickWave from '../views/clickWave';
 import home from '../views/home';
