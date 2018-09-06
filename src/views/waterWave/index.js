@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import WaterWave from '../../components/WaterWave';
-import './index.css';
 
 class waterWave extends Component {
     render() {

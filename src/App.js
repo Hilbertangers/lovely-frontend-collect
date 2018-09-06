@@ -6,7 +6,6 @@ class App extends Component {
     return (
       <div>
         <GetRouter />
-        <div>test</div>
       </div>
     );
   }
