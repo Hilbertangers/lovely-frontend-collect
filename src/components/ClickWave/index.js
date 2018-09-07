@@ -3,10 +3,10 @@ import styled, { keyframes } from 'styled-components';
 
 const Wrapper = styled.div`
     position: absolute;
-    top: 0;
+    top: 10vh;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     background-image: url('https://images.unsplash.com/photo-1440688807730-73e4e2169fb8?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=');
     background-attachment: fixed;
     background-position: center center; 
@@ -17,8 +17,8 @@ const Wrapper = styled.div`
 
 const WaveWrapper = styled.div`
     position: absolute;
-    width: 80vmin;
-    height: 80vmin;
+    /* width: 100%; */
+    /* height: 100%; */
     z-index: ${props => props.style.zIndex};
     top: ${props => props.style.top};
     left: ${props => props.style.left};
@@ -96,9 +96,6 @@ const WaveItem4 = styled(WaveItem)`
 class ClickWave extends Component {
     constructor(props) {
         super(props);
-        let screenSizeWidth = document.body.clientWidth;
-        let screenSizeHeight = document.body.clientHeight;
-        this.halfvmin = (screenSizeWidth > screenSizeHeight ? screenSizeHeight / 2 : screenSizeWidth / 2) * 0.8;
         this.state = {
             waveList: []
         };
@@ -136,8 +133,8 @@ class ClickWave extends Component {
                                 key={index}
                                 style={{
                                     zIndex: index,
-                                    top: item.pageY - this.halfvmin,
-                                    left: item.pageX - this.halfvmin,
+                                    top: item.pageY - 100,
+                                    left: item.pageX,
                                 }}
                                 >
                                 <Wave>

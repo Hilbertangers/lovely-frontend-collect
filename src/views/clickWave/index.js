@@ -3,11 +3,16 @@ import ClickWave from '../../components/ClickWave';
 
 class clickWave extends Component {
     render() {
-      return (
-        <ClickWave />
-      );
+        return (
+            <div>
+                <div>
+                    <span>source:</span>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.oxxostudio.tw/articles/201407/css-water-wave.html">点击水纹原理</a>
+                </div>
+                <ClickWave />
+            </div>
+        );
     }
-  }
-  
+}
+
 export default clickWave;
-  
