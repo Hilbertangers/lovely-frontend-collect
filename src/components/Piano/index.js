@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
 export default class Piano extends Component {
-    constructor (option = {}) {
-        super();
-        this.options = {
+    constructor (props) {
+        super(props);
+        this.defaultOptions = {
             canvasWidth: 1080,
             canvasHeight: 300,
             values: [
@@ -39,6 +39,8 @@ export default class Piano extends Component {
             padding: 20,
             minHeight: 80
         }
+        this.options = Object.assign({}, this.defaultOptions, this.props.config);
+        console.log(this.options);
         this.mouseX = 0;
         this.heightStore = []; // 存储height的当前值
         this.draw = this.draw.bind(this);
