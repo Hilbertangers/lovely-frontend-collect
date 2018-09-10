@@ -13,10 +13,10 @@ class home extends Component {
                 <StyleLink className="block" to="/clickWave">点击水波图</StyleLink>
                 <StyleLink className="block" to="/waterWave">容器canvas水波图</StyleLink>
                 <StyleLink className="block" to="/piano">鼠标钢琴</StyleLink>
+                <StyleLink className="block" to="/rainDrop">黑客帝国数字🌧</StyleLink>
             </div>
         );
     }
-  }
-  
-  export default home;
-  
+}
+
+export default home;
