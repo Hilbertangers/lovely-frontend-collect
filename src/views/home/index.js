@@ -14,6 +14,7 @@ class home extends Component {
                 <StyleLink className="block" to="/waterWave">容器canvas水波图</StyleLink>
                 <StyleLink className="block" to="/piano">鼠标钢琴</StyleLink>
                 <StyleLink className="block" to="/rainDrop">黑客帝国数字🌧</StyleLink>
+                <StyleLink className="block" to="/clipCover">canvas图片裁剪遮盖</StyleLink>
             </div>
         );
     }
