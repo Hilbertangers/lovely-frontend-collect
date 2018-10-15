@@ -15,6 +15,7 @@ class home extends Component {
                 <StyleLink className="block" to="/piano">鼠标钢琴</StyleLink>
                 <StyleLink className="block" to="/rainDrop">黑客帝国数字🌧</StyleLink>
                 <StyleLink className="block" to="/clipCover">canvas图片裁剪遮盖</StyleLink>
+                <StyleLink className="block" to="/springEffect">弹簧特效</StyleLink>
             </div>
         );
     }
