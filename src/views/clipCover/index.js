@@ -6,7 +6,7 @@ export default class clipCover extends Component {
         return (
             <div>
                 <div>
-                    <span>source:</span>
+                    <span>Inspired by:</span>
                     <a target="_blank" rel="noopener noreferrer" href="https://codepen.io/HelKyle/pen/RYVqRb">codePen from Helkyle</a>
                 </div>
                 <ClipCover />

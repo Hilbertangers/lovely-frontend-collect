@@ -6,7 +6,7 @@ class clickWave extends Component {
         return (
             <div>
                 <div>
-                    <span>source:</span>
+                    <span>Inspired by:</span>
                     <a target="_blank" rel="noopener noreferrer" href="https://www.oxxostudio.tw/articles/201407/css-water-wave.html">点击水纹原理</a>
                 </div>
                 <ClickWave />

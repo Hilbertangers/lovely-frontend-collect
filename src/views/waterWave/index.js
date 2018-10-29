@@ -6,7 +6,7 @@ class waterWave extends Component {
         return (
             <div>
                 <div>
-                    <span>source:</span>
+                    <span>Inspired by:</span>
                     <a target="_blank" rel="noopener noreferrer" href="https://juejin.im/post/5b4ffa045188251b134e7211">水波图原理</a>
                 </div>
                 <ul>

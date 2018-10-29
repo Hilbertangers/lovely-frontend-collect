@@ -6,7 +6,7 @@ export default class rainDrop extends Component {
         return (
             <div>
                 <div>
-                    <span>source:</span>
+                    <span>Inspired by:</span>
                     <a target="_blank" rel="noopener noreferrer" href="https://juejin.im/post/5b6ff1076fb9a009a545f58b">黑客帝国数字🌧特效</a>
                 </div>
                 <RainDrop></RainDrop>

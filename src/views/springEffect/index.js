@@ -6,7 +6,7 @@ export default class springEffect extends Component {
         return (
             <div>
                 <div>
-                    <span>source:</span>
+                    <span>Inspired by:</span>
                     <a target="_blank" rel="noopener noreferrer" href="https://github.com/codepunkt/css-spring">css spring</a>
                 </div>
                 <SpringEffect></SpringEffect>
