@@ -6,6 +6,7 @@ import piano from '../views/piano';
 import rainDrop from '../views/rainDrop';
 import clipCover from '../views/clipCover';
 import springEffect from '../views/springEffect';
+import bulbSwitch from '../views/bulbSwitch';
 import home from '../views/home';
 
 class GetRouter extends Component {
@@ -20,6 +21,7 @@ class GetRouter extends Component {
                     <Route path="/rainDrop" component={rainDrop}></Route>
                     <Route path="/clipCover" component={clipCover}></Route>
                     <Route path="/springEffect" component={springEffect}></Route>
+                    <Route path="/bulbSwitch" component={bulbSwitch}></Route>
                 </div>
             </Router>
         );

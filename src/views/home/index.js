@@ -16,6 +16,7 @@ class home extends Component {
                 <StyleLink className="block" to="/rainDrop">黑客帝国数字🌧</StyleLink>
                 <StyleLink className="block" to="/clipCover">canvas图片裁剪遮盖</StyleLink>
                 <StyleLink className="block" to="/springEffect">弹簧特效</StyleLink>
+                <StyleLink className="block" to="/bulbSwitch">灯泡点亮效果的switch</StyleLink>
             </div>
         );
     }
