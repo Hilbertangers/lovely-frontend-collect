@@ -6,7 +6,7 @@ import piano from '../views/piano';
 import rainDrop from '../views/rainDrop';
 import clipCover from '../views/clipCover';
 import springEffect from '../views/springEffect';
-import bulbSwitch from '../views/bulbSwitch';
+import bulbSwitch from '../views/bulbSwitch/view';
 import home from '../views/home';
 
 class GetRouter extends Component {

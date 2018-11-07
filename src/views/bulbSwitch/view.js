@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import BulbSwitch from '../../components/BulbSwitch'
 import styled from 'styled-components'
+import { setSwitchState } from './action'
 
 const BulbSwitchWrapper = styled.div`
     width: 500px;
@@ -11,18 +13,15 @@ const BulbSwitchWrapper = styled.div`
     background: #514878;
 `
 
+@connect(
+    state => ({
+        checkState: state.bulbSwitch.checkState
+    }),
+    dispatch => ({
+        setSwitchState: (...args) => dispatch(setSwitchState(...args))
+    })
+)
 export default class bulbSwitch extends Component {
-    constructor () {
-        super()
-        this.state = {
-            checkState: false
-        }
-    }
-    handleStateChange = val => {
-        this.setState({
-            checkState: val
-        })
-    }
     render () {
         return (
             <div>
@@ -31,7 +30,7 @@ export default class bulbSwitch extends Component {
                     <a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/shots/4229342-Light-Bulb-Switch">Light Bulb Switch</a>
                 </div>
                 <BulbSwitchWrapper>
-                    <BulbSwitch value={this.state.checkState} stateChange={this.handleStateChange} />
+                    <BulbSwitch value={this.props.checkState} stateChange={this.props.setSwitchState} />
                 </BulbSwitchWrapper>
             </div>
         );

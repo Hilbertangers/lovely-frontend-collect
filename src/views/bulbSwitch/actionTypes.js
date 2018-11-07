@@ -1,0 +1,1 @@
+export const SET_SWITCH_STATE = 'SET_SWITCH_STATE'
