@@ -52,15 +52,63 @@ export default class NumberRoll extends Component {
     constructor() {
         super()
         this.state = {
-            totalValue: 123
+            totalValue: 1002,
         }
-        this.numbersConfig = []
-        for (let i = 0; i < 10; i++) {
-            this.numbersConfig.push({
-                label: i,
-                rotateX: 360 / 10 * i
+        this.wrapperRotateFlag = []
+        for (let i = 0; i < String(this.state.totalValue).length; i++) {
+            this.wrapperRotateFlag.push({
+                index: String(this.state.totalValue)[i],
+                rotate: 0
             })
         }
+    }
+    componentDidMount () {
+
+    }
+    componentDidUpdate () {
+
+    }
+    rotateFlagUpdate = (item, index) => {
+        let lastIndex = this.wrapperRotateFlag[index].index
+        let lastRotate = this.wrapperRotateFlag[index].rotate
+        let targeRotate;
+        let abs
+        let direct
+        // 在一个循环中依据先后两数的大小，判断圆环旋转方向
+        if (item >= lastIndex) {
+            if (Math.abs(item - lastIndex) <= Math.abs(lastIndex - item + 10)) {
+                direct = true
+                abs = Math.abs(item - lastIndex)
+            } else {
+                direct = false
+                abs = Math.abs(lastIndex - item + 10)
+            }
+        } else {
+            if (Math.abs(lastIndex - item) <= Math.abs(item + 10 - lastIndex)) {
+                direct = false
+                abs = Math.abs(lastIndex - item)
+            } else {
+                direct = true
+                abs = Math.abs(item + 10 - lastIndex)
+            }
+        }
+        // let direct = item >=lastIndex 78901234567890123
+        if (lastIndex === item) {
+            if (lastRotate === 0) {
+                targeRotate = item * (-36)
+            } else {
+                targeRotate = lastRotate
+            }
+        } else if(direct) {
+            // 加
+            targeRotate = lastRotate - abs * 36
+        } else if (!direct) {
+            // 减
+            targeRotate = lastRotate + abs * 36
+        }
+        this.wrapperRotateFlag[index].index = item
+        this.wrapperRotateFlag[index].rotate = targeRotate
+        return targeRotate
     }
     addOne = () => {
         this.setState(preState => ({
@@ -84,6 +132,23 @@ export default class NumberRoll extends Component {
         }));
     }
     render() {
+        let numbersConfig = []
+        String(this.state.totalValue).split('').forEach(item => {
+            let itemConfig = (() => {
+                let arr = []
+                for (let i = 0; i < 10; i++) {
+                    arr.push({
+                        label: i,
+                        rotateX: 360 / 10 * i
+                    })
+                }
+                return arr
+            })()
+            numbersConfig.push(itemConfig)
+        })
+
+        // 增减位判断保护
+        
         return (
             <SectionWrapper>
                 <InputWrapper>
@@ -91,9 +156,9 @@ export default class NumberRoll extends Component {
                     {
                         String(this.state.totalValue).split('').map((item, index) => (
                             <Stage key={index}>
-                                <Wrapper x={item * (-36)}>
+                                <Wrapper x={this.rotateFlagUpdate(item, index)}>
                                     {
-                                        this.numbersConfig.map((t, index) => (
+                                        numbersConfig[index].map((t, index) => (
                                             <Number key={index} x={t.rotateX}>{t.label}</Number>
                                         ))
                                     }
