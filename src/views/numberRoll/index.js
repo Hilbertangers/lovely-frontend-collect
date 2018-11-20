@@ -39,7 +39,7 @@ const Wrapper = styled.div`
     transition: opacity 1s, transform 1s;
 `
 
-const Number = styled.div`
+const NumberWrapper = styled.div`
     position: absolute;
     backface-visibility: hidden;
     text-align: center;
@@ -52,15 +52,16 @@ export default class NumberRoll extends Component {
     constructor() {
         super()
         this.state = {
-            totalValue: 1002,
+            totalValue: 97,
         }
         this.wrapperRotateFlag = []
         for (let i = 0; i < String(this.state.totalValue).length; i++) {
             this.wrapperRotateFlag.push({
-                index: String(this.state.totalValue)[i],
+                index: Number(String(this.state.totalValue)[i]),
                 rotate: 0
             })
         }
+        
     }
     componentDidMount () {
 
@@ -76,7 +77,10 @@ export default class NumberRoll extends Component {
         let direct
         // 在一个循环中依据先后两数的大小，判断圆环旋转方向
         if (item >= lastIndex) {
-            if (Math.abs(item - lastIndex) <= Math.abs(lastIndex - item + 10)) {
+            if (Math.abs(item - lastIndex) === Math.abs(lastIndex - item + 10)) {
+                direct = true
+                abs = Math.abs(item - lastIndex)
+            } else if (Math.abs(item - lastIndex) < Math.abs(lastIndex - item + 10)) {
                 direct = true
                 abs = Math.abs(item - lastIndex)
             } else {
@@ -84,7 +88,10 @@ export default class NumberRoll extends Component {
                 abs = Math.abs(lastIndex - item + 10)
             }
         } else {
-            if (Math.abs(lastIndex - item) <= Math.abs(item + 10 - lastIndex)) {
+            if (Math.abs(item - lastIndex) === Math.abs(lastIndex - item + 10)) {
+                direct = true
+                abs = Math.abs(item - lastIndex)
+            } else if (Math.abs(lastIndex - item) < Math.abs(item + 10 - lastIndex)) {
                 direct = false
                 abs = Math.abs(lastIndex - item)
             } else {
@@ -92,14 +99,13 @@ export default class NumberRoll extends Component {
                 abs = Math.abs(item + 10 - lastIndex)
             }
         }
-        // let direct = item >=lastIndex 78901234567890123
         if (lastIndex === item) {
             if (lastRotate === 0) {
                 targeRotate = item * (-36)
             } else {
                 targeRotate = lastRotate
             }
-        } else if(direct) {
+        } else if (direct) {
             // 加
             targeRotate = lastRotate - abs * 36
         } else if (!direct) {
@@ -128,8 +134,11 @@ export default class NumberRoll extends Component {
     inputChange = (e) => {
         e.persist()
         this.setState(preState => ({
-            totalValue: e.target.value
+            totalValue: Number(e.target.value)
         }));
+    }
+    behindNumberUpdate = () => {
+        
     }
     render() {
         let numbersConfig = []
@@ -148,29 +157,43 @@ export default class NumberRoll extends Component {
         })
 
         // 增减位判断保护
-        
+        if (String(this.state.totalValue).length > this.wrapperRotateFlag.length) {
+            for (let i = this.wrapperRotateFlag.length; i < String(this.state.totalValue).length; i++) {
+                this.wrapperRotateFlag.push({
+                    index: Number(String(this.state.totalValue)[i]),
+                    rotate: 0
+                })
+            }
+        }
+
         return (
-            <SectionWrapper>
-                <InputWrapper>
-                    <input type="text" value={this.state.totalValue} onChange={this.inputChange} />
-                    {
-                        String(this.state.totalValue).split('').map((item, index) => (
-                            <Stage key={index}>
-                                <Wrapper x={this.rotateFlagUpdate(item, index)}>
-                                    {
-                                        numbersConfig[index].map((t, index) => (
-                                            <Number key={index} x={t.rotateX}>{t.label}</Number>
-                                        ))
-                                    }
-                                </Wrapper>
-                            </Stage>
-                        ))
-                    }
-                </InputWrapper>
-                <button onClick={this.addOne}>add one</button>
-                <button onClick={this.minOne}>min one</button>
-                <button onClick={this.random}>random</button>
-            </SectionWrapper>
+            <div>
+                <div>
+                    <span>Inspired by:</span>
+                    <span>Me and my Cat</span>
+                </div>
+                <SectionWrapper>
+                    <InputWrapper>
+                        <input type="text" value={this.state.totalValue} onChange={this.inputChange} />
+                        {
+                            String(this.state.totalValue).split('').map((item, index) => (
+                                <Stage key={index}>
+                                    <Wrapper x={this.rotateFlagUpdate(Number(item), index)}>
+                                        {
+                                            numbersConfig[index].map((t, index) => (
+                                                <NumberWrapper key={index} x={t.rotateX}>{t.label}</NumberWrapper>
+                                            ))
+                                        }
+                                    </Wrapper>
+                                </Stage>
+                            ))
+                        }
+                    </InputWrapper>
+                    <button onClick={this.addOne}>add one</button>
+                    <button onClick={this.minOne}>min one</button>
+                    <button onClick={this.random}>random</button>
+                </SectionWrapper>                
+            </div>
         )
     }
 }
