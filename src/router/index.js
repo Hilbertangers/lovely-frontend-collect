@@ -8,6 +8,7 @@ import clipCover from '../views/clipCover';
 import springEffect from '../views/springEffect';
 import bulbSwitch from '../views/bulbSwitch/view';
 import numberRoll from '../views/numberRoll';
+import shootingStar from '../views/shootingStar';
 import home from '../views/home';
 
 class GetRouter extends Component {
@@ -24,6 +25,7 @@ class GetRouter extends Component {
                     <Route path="/springEffect" component={springEffect}></Route>
                     <Route path="/bulbSwitch" component={bulbSwitch}></Route>
                     <Route path="/numberRoll" component={numberRoll}></Route>
+                    <Route path="/shootingStar" component={shootingStar}></Route>
                 </div>
             </Router>
         );

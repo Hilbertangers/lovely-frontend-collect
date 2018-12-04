@@ -18,6 +18,7 @@ class home extends Component {
                 <StyleLink to="/springEffect">弹簧特效</StyleLink>
                 <StyleLink to="/bulbSwitch">灯泡点亮效果的switch</StyleLink>
                 <StyleLink to="/numberRoll">数字滚动3d效果</StyleLink>
+                <StyleLink to="/shootingStar">流星雨又来临~</StyleLink>
             </div>
         );
     }
