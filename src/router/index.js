@@ -9,6 +9,7 @@ import springEffect from '../views/springEffect';
 import bulbSwitch from '../views/bulbSwitch/view';
 import numberRoll from '../views/numberRoll';
 import shootingStar from '../views/shootingStar';
+import dandelion from '../views/dandelion';
 import home from '../views/home';
 
 class GetRouter extends Component {
@@ -26,6 +27,7 @@ class GetRouter extends Component {
                     <Route path="/bulbSwitch" component={bulbSwitch}></Route>
                     <Route path="/numberRoll" component={numberRoll}></Route>
                     <Route path="/shootingStar" component={shootingStar}></Route>
+                    <Route path="/dandelion" component={dandelion}></Route>
                 </div>
             </Router>
         );

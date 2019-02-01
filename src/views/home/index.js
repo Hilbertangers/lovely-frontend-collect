@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyleLink = styled(Link)`
-    display:block;
+    display: block;
 `
 
 class home extends Component {
@@ -19,6 +19,7 @@ class home extends Component {
                 <StyleLink to="/bulbSwitch">灯泡点亮效果的switch</StyleLink>
                 <StyleLink to="/numberRoll">数字滚动3d效果</StyleLink>
                 <StyleLink to="/shootingStar">流星雨又来临~</StyleLink>
+                <StyleLink to="/dandelion">漂浮物背景墙</StyleLink>
             </div>
         );
     }
