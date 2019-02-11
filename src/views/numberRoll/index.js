@@ -170,7 +170,7 @@ export default class NumberRoll extends Component {
             <div>
                 <div>
                     <span>Inspired by:</span>
-                    <span>Me and my Cat</span>
+                    <span>my Cat and me</span>
                 </div>
                 <SectionWrapper>
                     <InputWrapper>
