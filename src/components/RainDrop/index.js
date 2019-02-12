@@ -17,6 +17,7 @@ export default class RainDrop extends Component {
         this.speedCnt = 0
         this.firstScreen = true
         this.draw = this.draw.bind(this)
+        this.animationFrameId = null
     }
     componentDidMount () {
         const { canvasHeight, canvasWidth, fontSize } = this.options
@@ -58,7 +59,10 @@ export default class RainDrop extends Component {
             
         }
 
-        window.requestAnimationFrame(this.draw)
+        this.animationFrameId = window.requestAnimationFrame(this.draw)
+    }
+    componentWillUnmount () {
+        window.cancelAnimationFrame(this.animationFrameId);
     }
     render () {
         return (

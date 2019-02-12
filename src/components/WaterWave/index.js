@@ -8,6 +8,7 @@ class WaterWave extends Component {
 		this.state = {};
 		this.isDrawContainer = false;
 		this.draw = this.draw.bind(this);
+		this.animationFrameId = null;
 	}
 
 	componentDidMount() {
@@ -64,7 +65,7 @@ class WaterWave extends Component {
 			nowRange: this.nowRange,
 		});
 		this.wave1.draw(ctx);
-		window.requestAnimationFrame(this.draw);
+		this.animationFrameId = window.requestAnimationFrame(this.draw);
 	}
 
 	drawContainer(ctx) {
@@ -195,6 +196,10 @@ class WaterWave extends Component {
 		ctx.fillStyle = grd;
 		ctx.fill();
 	}
+
+	componentWillUnmount () {
+        window.cancelAnimationFrame(this.animationFrameId);
+    }
 
 	render() {
 		return (

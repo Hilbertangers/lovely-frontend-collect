@@ -5,6 +5,7 @@ export default class dandelion extends Component {
         super()
         this.element = []
         this.canvas = React.createRef()
+        this.animationFrameId = null
     }
     componentDidMount () {
         this.setElemProperty()
@@ -81,7 +82,10 @@ export default class dandelion extends Component {
                 this.draw_x(ctx, item)
             }
         })
-        window.requestAnimationFrame(this.draw)
+        this.animationFrameId = window.requestAnimationFrame(this.draw)
+    }
+    componentWillUnmount () {
+        window.cancelAnimationFrame(this.animationFrameId)
     }
     render() {
         return (

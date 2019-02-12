@@ -70,6 +70,7 @@ export default class ClipCover extends Component {
         this.coverImg = coverImg
         this.speed = -20
         this.distance = 0
+        this.animationFrameId = null
     }
     componentDidMount () {
         this.canvas = this.refs.canvas
@@ -129,13 +130,13 @@ export default class ClipCover extends Component {
         ctx.drawImage(this.readyImg, 0, 0, this.readyImg.width, this.readyImg.height, 0, 0, width, height)
         ctx.restore()
 
-        window.requestAnimationFrame(this.draw)
-    }
-    startCover () {
-
+        this.animationFrameId = window.requestAnimationFrame(this.draw)
     }
     changDirection = () => {
         this.speed *= -1
+    }
+    componentWillUnmount () {
+        window.cancelAnimationFrame(this.animationFrameId);
     }
     render() {
         return (

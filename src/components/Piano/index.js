@@ -46,6 +46,7 @@ export default class Piano extends Component {
         this.draw = this.draw.bind(this);
         this.mousemove = this.mousemove.bind(this);
         this.canvasInit = this.canvasInit.bind(this);
+        this.animationFrameId = null;
     }
     componentDidMount () {
         const { canvasWidth, canvasHeight, values, minHeight } = this.options;
@@ -79,7 +80,7 @@ export default class Piano extends Component {
             ctx.fillStyle = values[i]['color'];
             ctx.fillRect(x, canvasHeight - curHeight, itemWidth, curHeight);
         }
-        window.requestAnimationFrame(this.draw);
+        this.animationFrameId = window.requestAnimationFrame(this.draw);
     }
     mousemove (e) {
         this.mouseX = e.pageX;
@@ -91,6 +92,9 @@ export default class Piano extends Component {
         amount = amount < 0 ? 0 : amount;
         amount = amount > 1 ? 1 : amount;
         return value1 + (value2 - value1) * amount;
+    }
+    componentWillUnmount () {
+        window.cancelAnimationFrame(this.animationFrameId);
     }
     render () {
         return (
