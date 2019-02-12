@@ -29,7 +29,7 @@ export default class dandelion extends Component {
                             x,
                             y,
                             s: ((Math.random() * 5) + 1) / 10,
-                            dr: ((Math.random() * 3) - 1) / 10,
+                            dr: Math.round(Math.random()) === 1 ? (Math.random() * 3 - 1) / 10 : (1 - Math.random() * 3) / 10,
                             r: Math.random() * 360,
                             type: 'x'
                         });
@@ -40,7 +40,7 @@ export default class dandelion extends Component {
     }
     draw_o = (ctx, elem) => {
         ctx.beginPath();
-        ctx.arc(this.wave(elem.x), this.wave(elem.y), elem.s * 12, 0, 2 * Math.PI, false)
+        ctx.arc(this.wave(elem.x, 3, 0.5), this.wave(elem.y, 4, 0.2), elem.s * 12, 0, 2 * Math.PI, false)
         ctx.lineWidth = elem.s * 5
         ctx.strokeStyle = '#fff'
         ctx.stroke()
@@ -56,8 +56,9 @@ export default class dandelion extends Component {
             ctx.stroke();
         };
             
-        ctx.translate(this.wave(elem.x), this.wave(elem.y));
+        ctx.translate(this.wave(elem.x, 3), this.wave(elem.y, 6));
         ctx.rotate(elem.r * Math.PI / 180);
+        elem.r += elem.dr
         
         line(-1, -1, 1, 1, '#fff');
         line(1, -1, -1, 1, '#fff');
@@ -66,7 +67,7 @@ export default class dandelion extends Component {
     }
     // 使用正弦模拟运动，日期时间作为变量
     // 振幅，周期以后可以设为options
-    wave = (val, swing = 5, period = 1 / 1000, row = 0, column = 0) => val + swing * Math.sin(new Date().getTime() * period + row) + column
+    wave = (val, swing = 5, row = 0, period = 1 / 1000) => val + swing * Math.sin(new Date().getTime() * period + val * period * 100 + row)
     draw = () => {
         const { width, height } = this.canvas.current
         const ctx = this.canvas.current.getContext('2d')
