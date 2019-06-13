@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
+import { setTotalValue } from './action'
 
 const SectionWrapper = styled.div`
     margin: 60px auto;
@@ -48,20 +50,24 @@ const NumberWrapper = styled.div`
     transform: ${props => `rotateX(${props.x}deg)`} translateZ(40px);
 `
 
+@connect(
+    state => ({
+        ...state.numberRoll
+    }),
+    dispatch => ({
+        setTotalValue: (...args) => dispatch(setTotalValue(...args))
+    })
+)
 export default class NumberRoll extends Component {
-    constructor() {
-        super()
-        this.state = {
-            totalValue: 97,
-        }
+    constructor(props) {
+        super(props)
         this.wrapperRotateFlag = []
-        for (let i = 0; i < String(this.state.totalValue).length; i++) {
+        for (let i = 0; i < String(this.props.totalValue).length; i++) {
             this.wrapperRotateFlag.push({
-                index: Number(String(this.state.totalValue)[i]),
+                index: Number(String(this.props.totalValue)[i]),
                 rotate: 0
             })
         }
-        
     }
     componentDidMount () {
 
@@ -117,32 +123,23 @@ export default class NumberRoll extends Component {
         return targeRotate
     }
     addOne = () => {
-        this.setState(preState => ({
-            totalValue: preState.totalValue + 1
-        }));
+        this.props.setTotalValue(this.props.totalValue + 1)
     }
     minOne = () => {
-        this.setState(preState => ({
-            totalValue: preState.totalValue - 1
-        }));
+        this.props.setTotalValue(this.props.totalValue - 1)
     }
     random = () => {
-        this.setState(preState => ({
-            totalValue: Math.ceil(Math.random() * 1000)
-        }));
+        this.props.setTotalValue(Math.ceil(Math.random() * 1000))
     }
     inputChange = (e) => {
-        e.persist()
-        this.setState(preState => ({
-            totalValue: Number(e.target.value)
-        }));
+        this.props.setTotalValue(Number(e.target.value))
     }
     behindNumberUpdate = () => {
         
     }
     render() {
         let numbersConfig = []
-        String(this.state.totalValue).split('').forEach(item => {
+        String(this.props.totalValue).split('').forEach(item => {
             let itemConfig = (() => {
                 let arr = []
                 for (let i = 0; i < 10; i++) {
@@ -157,10 +154,10 @@ export default class NumberRoll extends Component {
         })
 
         // 增减位判断保护
-        if (String(this.state.totalValue).length > this.wrapperRotateFlag.length) {
-            for (let i = this.wrapperRotateFlag.length; i < String(this.state.totalValue).length; i++) {
+        if (String(this.props.totalValue).length > this.wrapperRotateFlag.length) {
+            for (let i = this.wrapperRotateFlag.length; i < String(this.props.totalValue).length; i++) {
                 this.wrapperRotateFlag.push({
-                    index: Number(String(this.state.totalValue)[i]),
+                    index: Number(String(this.props.totalValue)[i]),
                     rotate: 0
                 })
             }
@@ -174,9 +171,9 @@ export default class NumberRoll extends Component {
                 </div>
                 <SectionWrapper>
                     <InputWrapper>
-                        <input type="text" value={this.state.totalValue} onChange={this.inputChange} />
+                        <input type="text" value={this.props.totalValue} onChange={this.inputChange} />
                         {
-                            String(this.state.totalValue).split('').map((item, index) => (
+                            String(this.props.totalValue).split('').map((item, index) => (
                                 <Stage key={index}>
                                     <Wrapper x={this.rotateFlagUpdate(Number(item), index)}>
                                         {

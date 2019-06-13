@@ -22,7 +22,7 @@ export default class BulbSwitch extends Component {
             <SwitchWrapper>
                 <input
                     type="checkbox"
-                    defaultChecked={this.props.value}
+                    checked={this.props.value}
                     onChange={this.handleChange}
                     name="switch"/>
                 <Switch htmlFor="switch">

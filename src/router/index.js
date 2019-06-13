@@ -7,7 +7,7 @@ import rainDrop from '../views/rainDrop';
 import clipCover from '../views/clipCover';
 import springEffect from '../views/springEffect';
 import bulbSwitch from '../views/bulbSwitch/view';
-import numberRoll from '../views/numberRoll';
+import numberRoll from '../views/numberRoll/view';
 import shootingStar from '../views/shootingStar';
 import dandelion from '../views/dandelion';
 import home from '../views/home';

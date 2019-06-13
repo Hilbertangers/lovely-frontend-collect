@@ -121,20 +121,20 @@ export const SwitchWrapper = styled.div`
 
             .spark {
                 > div:nth-of-type(1) {
-                    animation: ${sparkFrame1} 2s ease-in-out
-                    animation-delay: 0.4s
+                    animation: ${sparkFrame1} 2s ease-in-out;
+                    animation-delay: 0.4s;
                 }
                 > div:nth-of-type(2) {
-                    animation: ${sparkFrame2} 2.4s ease-in-out
-                    animation-delay: 0.4s
+                    animation: ${sparkFrame2} 2.4s ease-in-out;
+                    animation-delay: 0.4s;
                 }
                 > div:nth-of-type(3) {
-                    animation: ${sparkFrame3} 2s ease-in-out
-                    animation-delay: 0.9s
+                    animation: ${sparkFrame3} 2s ease-in-out;
+                    animation-delay: 0.9s;
                 }
                 > div:nth-of-type(4) {
-                    animation: ${sparkFrame4} 1.7s ease-in-out
-                    animation-delay: 0.9s
+                    animation: ${sparkFrame4} 1.7s ease-in-out;
+                    animation-delay: 0.9s;
                 }
             }
         }

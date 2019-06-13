@@ -1,17 +1,17 @@
-import { SET_SWITCH_STATE } from './actionTypes'
+import { SET_TOTAL_VALUE } from './actionTypes'
 
 const initState = {
-    checkState: true
+    totalValue: 97
 }
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
-        case SET_SWITCH_STATE:
+        case SET_TOTAL_VALUE:
             return {
-                checkState: action.detail
+                totalValue: action.detail
             }
         default:
-            return state;
+            return state
     }
 }
 

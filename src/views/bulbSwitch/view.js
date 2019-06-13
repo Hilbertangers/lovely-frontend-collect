@@ -15,7 +15,7 @@ const BulbSwitchWrapper = styled.div`
 
 @connect(
     state => ({
-        checkState: state.bulbSwitch.checkState
+        ...state.bulbSwitch
     }),
     dispatch => ({
         setSwitchState: (...args) => dispatch(setSwitchState(...args))
