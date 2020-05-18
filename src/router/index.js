@@ -10,6 +10,7 @@ import bulbSwitch from '../views/bulbSwitch/view';
 import numberRoll from '../views/numberRoll/view';
 import shootingStar from '../views/shootingStar';
 import dandelion from '../views/dandelion';
+import screenshots from '../views/screenshots';
 import home from '../views/home';
 
 class GetRouter extends Component {
@@ -28,6 +29,7 @@ class GetRouter extends Component {
                     <Route path="/numberRoll" component={numberRoll}></Route>
                     <Route path="/shootingStar" component={shootingStar}></Route>
                     <Route path="/dandelion" component={dandelion}></Route>
+                    <Route path="/screenshots" component={screenshots}></Route>
                 </div>
             </Router>
         );

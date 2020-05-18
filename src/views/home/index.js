@@ -20,6 +20,7 @@ class home extends Component {
                 <StyleLink to="/numberRoll">数字滚动3d效果</StyleLink>
                 <StyleLink to="/shootingStar">流星雨又来临~</StyleLink>
                 <StyleLink to="/dandelion">漂浮物背景墙</StyleLink>
+                <StyleLink to="/screenshots">屏幕截图</StyleLink>
             </div>
         );
     }
