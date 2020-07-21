@@ -35,7 +35,6 @@ const Wrapper = styled.div`
     position: absolute;
     left: 50%;
     transform-style: preserve-3d;
-    backface-visibility: hidden;
     height: 40px;
     transform: ${props => `rotateX(${props.x}deg)`};
     transition: opacity 1s, transform 1s;
@@ -135,7 +134,7 @@ export default class NumberRoll extends Component {
         this.props.setTotalValue(Number(e.target.value))
     }
     behindNumberUpdate = () => {
-        
+
     }
     render() {
         let numbersConfig = []
@@ -189,7 +188,7 @@ export default class NumberRoll extends Component {
                     <button onClick={this.addOne}>add one</button>
                     <button onClick={this.minOne}>min one</button>
                     <button onClick={this.random}>random</button>
-                </SectionWrapper>                
+                </SectionWrapper>
             </div>
         )
     }
