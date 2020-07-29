@@ -21,6 +21,7 @@ class home extends Component {
                 <StyleLink to="/shootingStar">流星雨又来临~</StyleLink>
                 <StyleLink to="/dandelion">漂浮物背景墙</StyleLink>
                 <StyleLink to="/screenshots">屏幕截图</StyleLink>
+                <StyleLink to="/flow">与或逻辑流程图</StyleLink>
             </div>
         );
     }

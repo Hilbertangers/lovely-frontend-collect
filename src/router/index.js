@@ -11,6 +11,7 @@ import numberRoll from '../views/numberRoll/view';
 import shootingStar from '../views/shootingStar';
 import dandelion from '../views/dandelion';
 import screenshots from '../views/screenshots';
+import flow from '../views/flow/view';
 import home from '../views/home';
 
 class GetRouter extends Component {
@@ -30,6 +31,7 @@ class GetRouter extends Component {
                     <Route path="/shootingStar" component={shootingStar}></Route>
                     <Route path="/dandelion" component={dandelion}></Route>
                     <Route path="/screenshots" component={screenshots}></Route>
+                    <Route path="/flow" component={flow}></Route>
                 </div>
             </Router>
         );
