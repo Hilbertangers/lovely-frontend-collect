@@ -219,19 +219,25 @@ export default class Flow extends Component {
       let fillColor = null;
       let fontColor = null;
 
-      switch (status) {
-        case true:
-          fillColor = color.success.fill;
-          fontColor = color.success.font;
-          break;
-        case false:
-          fillColor = color.fail.fill;
-          fontColor = color.fail.font;
-          break;
-        default:
-          fillColor = color.default.fill;
-          fontColor = color.default.font;
+      if (typeof status === 'string') {
+        fillColor = status;
+        fontColor = '#fff'
+      } else {
+        switch (status) {
+          case true:
+            fillColor = color.success.fill;
+            fontColor = color.success.font;
+            break;
+          case false:
+            fillColor = color.fail.fill;
+            fontColor = color.fail.font;
+            break;
+          default:
+            fillColor = color.default.fill;
+            fontColor = color.default.font;
+        }
       }
+
       ctx.beginPath();
       ctx.rect(x, y, width, height);
       ctx.strokeStyle = 'rgba(186, 165, 130, 0.8)';
